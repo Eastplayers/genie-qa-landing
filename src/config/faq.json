@@ -1,0 +1,47 @@
+[
+  {
+    "question": "Do I need coding skills to use Genie QA?",
+    "answer": "No. Genie QA is designed for Manual QCs, BAs, PMs, and POs with little or no coding experience.",
+    "topic": "coding"
+  },
+  {
+    "question": "Can Genie QA generate edge cases automatically?",
+    "answer": "Yes. Genie QA uses recorded workflows, requirements, and internal knowledge to generate additional scenarios beyond happy paths.",
+    "topic": "ai"
+  },
+  {
+    "question": "What happens if I don't provide requirements documents?",
+    "answer": "Genie QA can use built-in knowledge and workflow understanding to generate test scenarios automatically.",
+    "topic": "ai"
+  },
+  {
+    "question": "Can I run tests without keeping my laptop on?",
+    "answer": "Yes. Scheduled execution can run automatically in the platform.",
+    "topic": "cicd"
+  },
+  {
+    "question": "Can multiple team members collaborate?",
+    "answer": "Yes. Teams can manage test cases and test suites together.",
+    "topic": "general"
+  },
+  {
+    "question": "How is Genie QA different from Playwright or Cypress test generators?",
+    "answer": "Those tools generate code from recordings. Genie QA goes further — it uses AI to create edge cases, negative scenarios, and missing test paths you wouldn't think of manually.",
+    "topic": "competitive"
+  },
+  {
+    "question": "What happens when my UI changes? Do tests break?",
+    "answer": "Genie QA uses intelligent selectors that adapt to minor UI changes. When significant changes occur, the system flags affected tests for review rather than silently failing.",
+    "topic": "maintenance"
+  },
+  {
+    "question": "How accurate are the AI-generated test cases?",
+    "answer": "Generated tests are based on your recorded workflows, requirements documents, and a built-in knowledge base. You review and approve all generated cases before execution.",
+    "topic": "accuracy"
+  },
+  {
+    "question": "Is my data secure? Where are tests executed?",
+    "answer": "Your data is encrypted in transit and at rest. Tests execute in isolated environments. We never share your test data or application credentials with third parties.",
+    "topic": "security"
+  }
+]

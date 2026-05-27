@@ -1,0 +1,7 @@
+[
+  { "name": "Playwright", "category": "testing", "icon": "playwright" },
+  { "name": "Jira", "category": "project-management", "icon": "jira" },
+  { "name": "Git", "category": "cicd", "icon": "git" },
+  { "name": "CI/CD Pipelines", "category": "cicd", "icon": "cicd" },
+  { "name": "Weekly Email Reports", "category": "communication", "icon": "email" }
+]

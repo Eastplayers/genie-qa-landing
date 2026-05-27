@@ -1,0 +1,52 @@
+{
+  "tiers": [
+    {
+      "name": "Free",
+      "price": "$0",
+      "features": [
+        "1 team member",
+        "100 AI generation credits",
+        "3 test suites",
+        "Limited collaboration"
+      ],
+      "cta": { "label": "Start Free", "href": "/register" },
+      "recommended": false
+    },
+    {
+      "name": "Pro",
+      "price": "$49/mo",
+      "features": [
+        "10 team members",
+        "5,000 AI generation credits",
+        "Unlimited test suites",
+        "Scheduled execution",
+        "Full collaboration",
+        "AI failure insights"
+      ],
+      "cta": { "label": "Start Free", "href": "/register" },
+      "recommended": true
+    },
+    {
+      "name": "Enterprise",
+      "price": "Contact us",
+      "features": [
+        "Unlimited team members",
+        "Unlimited AI credits",
+        "Unlimited test suites",
+        "Full integrations",
+        "Dedicated support"
+      ],
+      "cta": { "label": "Contact Sales", "href": "/contact" },
+      "recommended": false
+    }
+  ],
+  "features": [
+    { "name": "Team members", "tiers": { "Free": "1", "Pro": "10", "Enterprise": "Unlimited" } },
+    { "name": "AI generation credits", "tiers": { "Free": "100", "Pro": "5,000", "Enterprise": "Unlimited" } },
+    { "name": "Test suites", "tiers": { "Free": "3", "Pro": "Unlimited", "Enterprise": "Unlimited" } },
+    { "name": "Scheduled execution", "tiers": { "Free": "excluded", "Pro": "included", "Enterprise": "included" } },
+    { "name": "Collaboration", "tiers": { "Free": "Limited", "Pro": "included", "Enterprise": "included" } },
+    { "name": "AI failure insights", "tiers": { "Free": "Limited", "Pro": "included", "Enterprise": "included" } },
+    { "name": "Integrations", "tiers": { "Free": "excluded", "Pro": "Partial", "Enterprise": "Full" } }
+  ]
+}

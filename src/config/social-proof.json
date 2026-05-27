@@ -1,0 +1,15 @@
+{
+  "metric": { "value": "50+", "label": "QA teams trust Genie QA" },
+  "testimonial": {
+    "quote": "Genie QA cut our test creation time by 80%. We catch edge cases we never thought of manually.",
+    "name": "Sarah Chen",
+    "role": "QA Lead",
+    "company": "TechFlow"
+  },
+  "logos": [
+    { "name": "Company 1", "placeholder": true },
+    { "name": "Company 2", "placeholder": true },
+    { "name": "Company 3", "placeholder": true },
+    { "name": "Company 4", "placeholder": true }
+  ]
+}
