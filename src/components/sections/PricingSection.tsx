@@ -23,8 +23,8 @@ interface PricingSectionProps {
 export function PricingSection({ config = defaultConfig }: PricingSectionProps) {
   const { tiers, features } = config;
 
-  const registrationUrl = import.meta.env.VITE_REGISTRATION_URL ?? '/register';
-  const contactUrl = import.meta.env.VITE_CONTACT_URL ?? '/contact';
+  const registrationUrl = 'https://app.genieqa.app/login';
+  const contactUrl = 'https://app.genieqa.app/login';
 
   return (
     <SectionWrapper id="pricing" className="py-20 px-4 sm:px-6 lg:px-8">

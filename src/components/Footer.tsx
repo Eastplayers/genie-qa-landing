@@ -9,8 +9,8 @@
  * Requirements: 18.1, 18.2, 18.3, 18.4, 18.5
  */
 export function Footer() {
-  const loginUrl = import.meta.env.VITE_LOGIN_URL ?? '/login';
-  const contactUrl = import.meta.env.VITE_CONTACT_URL ?? '/contact';
+  const loginUrl = 'https://app.genieqa.app/login';
+  const contactUrl = 'https://app.genieqa.app/login';
   const currentYear = new Date().getFullYear();
 
   return (

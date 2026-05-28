@@ -33,8 +33,9 @@ let eventQueue: AnalyticsEvent[] = [];
  * provider ID and tracking key are present.
  */
 export function getConfigFromEnv(): AnalyticsConfig {
-  const providerId = import.meta.env.VITE_ANALYTICS_PROVIDER_ID ?? '';
-  const trackingKey = import.meta.env.VITE_ANALYTICS_TRACKING_KEY ?? '';
+  // Analytics disabled — no provider configured yet
+  const providerId = '';
+  const trackingKey = '';
   return {
     providerId,
     trackingKey,

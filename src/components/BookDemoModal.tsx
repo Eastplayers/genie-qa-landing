@@ -5,7 +5,7 @@ interface BookDemoModalProps {
   onClose: () => void;
 }
 
-const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:8080';
+const API_URL = 'https://api.genieqa.app';
 
 /**
  * Modal form for booking a demo.

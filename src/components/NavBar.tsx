@@ -31,8 +31,8 @@ export function NavBar() {
   const hamburgerRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
 
-  const loginUrl = import.meta.env.VITE_LOGIN_URL ?? '/login';
-  const registrationUrl = import.meta.env.VITE_REGISTRATION_URL ?? '/register';
+  const loginUrl = 'https://app.genieqa.app/login';
+  const registrationUrl = 'https://app.genieqa.app/login';
 
   // Track scroll position for background transition (transparent → opaque past Hero)
   useEffect(() => {

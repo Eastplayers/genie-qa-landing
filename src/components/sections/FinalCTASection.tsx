@@ -15,7 +15,7 @@ const nextSteps = [
  * Requirements: 11.1, 11.2, 11.3, 11.4, 8.1, 8.2, 8.3, 8.4, 8.5
  */
 export function FinalCTASection() {
-  const registrationUrl = import.meta.env.VITE_REGISTRATION_URL ?? '#';
+  const registrationUrl = 'https://app.genieqa.app/login';
 
   return (
     <SectionWrapper

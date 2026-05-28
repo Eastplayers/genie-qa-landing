@@ -37,7 +37,7 @@ export function CTAButton({ variant, section, href, onClick, children }: CTAButt
 
     // Fire conversion event for primary CTA clicks (Req 16.5)
     if (variant === 'primary') {
-      const destinationUrl = href ?? import.meta.env.VITE_REGISTRATION_URL ?? '';
+      const destinationUrl = href ?? 'https://app.genieqa.app/login';
       trackConversion(section, destinationUrl);
     }
 

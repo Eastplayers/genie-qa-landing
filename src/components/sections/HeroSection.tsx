@@ -2,7 +2,7 @@ import { CTAButton } from '../CTAButton';
 import { SectionWrapper } from '../SectionWrapper';
 import { HeroDashboardMockup } from './HeroDashboardMockup';
 
-const registrationUrl = import.meta.env.VITE_REGISTRATION_URL ?? '#';
+const registrationUrl = 'https://app.genieqa.app/login';
 
 /**
  * Hero section — the first content visitors see above the fold.
