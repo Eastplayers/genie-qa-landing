@@ -39,7 +39,6 @@ const isLandingPage = window.location.pathname === '/' || window.location.pathna
  */
 export function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isSolutionsOpen, setIsSolutionsOpen] = useState(false);
   const isMobile = useMediaQuery('(max-width: 767px)');
   // Only run scroll-spy on the landing page — other pages have no section IDs to observe
@@ -52,19 +51,7 @@ export function NavBar() {
   const loginUrl = 'https://app.genieqa.app/login';
   const registrationUrl = 'https://app.genieqa.app/login';
 
-  // Track scroll position for background transition (transparent → opaque past Hero)
-  useEffect(() => {
-    const handleScroll = () => {
-      const heroElement = document.getElementById('hero');
-      const threshold = heroElement
-        ? heroElement.offsetTop + heroElement.offsetHeight - NAVBAR_HEIGHT
-        : window.innerHeight;
-      setIsScrolled(window.scrollY > threshold);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Set initial state
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+
 
   // Close menu when switching to desktop
   useEffect(() => {
