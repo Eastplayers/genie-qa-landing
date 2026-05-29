@@ -183,6 +183,11 @@ export function NavBar() {
               <CTAButton variant="primary" section="navbar" href={registrationUrl}>
                 Start Free
               </CTAButton>
+              {isScrolled && (
+                <CTAButton variant="primary" section="navbar-sticky" href={registrationUrl}>
+                  Get Started
+                </CTAButton>
+              )}
             </div>
           )}
 
@@ -242,6 +247,13 @@ export function NavBar() {
               Start Free
             </CTAButton>
           </div>
+          {isScrolled && (
+            <div className="mt-2">
+              <CTAButton variant="primary" section="navbar-sticky-mobile" href={registrationUrl}>
+                Get Started
+              </CTAButton>
+            </div>
+          )}
           <button
             type="button"
             onClick={closeMenu}

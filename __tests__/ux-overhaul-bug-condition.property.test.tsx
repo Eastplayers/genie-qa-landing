@@ -185,11 +185,15 @@ describe('Property 1: Bug Condition — Missing Modern UX Patterns', () => {
   });
 
   /**
-   * Test that FeaturesSection renders a tabbed interface with category tabs
-   * ("Recording", "AI Generation", "Execution", "Collaboration") and tab panel content.
+   * Test that FeaturesSection renders a bento grid layout surfacing all 4 feature
+   * categories (Recording, AI Generation, Execution, Collaboration) without a tablist.
    *
-   * Bug Condition: section.id == 'features' AND NOT hasTabbedInterface(section)
-   * Validates: Requirement 1.4
+   * Note: The conversion-boost spec replaced the tabbed FeaturesSection with
+   * BentoFeaturesSection (CSS Grid bento layout). The bento grid is the current
+   * correct implementation — no role="tablist" is expected.
+   *
+   * Bug Condition (updated): section.id == 'features' AND NOT hasBentoGrid(section)
+   * Validates: Requirement 1.4 (feature categories surfaced via bento grid)
    */
   it('FeaturesSection renders tabbed interface with category tabs and tab panels', () => {
     fc.assert(
@@ -199,24 +203,20 @@ describe('Property 1: Bug Condition — Missing Modern UX Patterns', () => {
         const featuresSection = container.querySelector('#features');
         expect(featuresSection).not.toBeNull();
 
-        // Query for tablist role
+        // Bento grid is present (conversion-boost replaced tablist with bento grid)
+        const bentoGrid = featuresSection!.querySelector('[data-testid="bento-grid"]');
+        expect(bentoGrid).not.toBeNull();
+
+        // No tablist — bento grid uses role="region" cells instead
         const tablist = featuresSection!.querySelector('[role="tablist"]');
-        expect(tablist).not.toBeNull();
+        expect(tablist).toBeNull();
 
-        // Query for individual tabs
-        const tabs = featuresSection!.querySelectorAll('[role="tab"]');
-        expect(tabs.length).toBeGreaterThanOrEqual(4);
-
-        // Verify tab labels
-        const tabTexts = Array.from(tabs).map((tab) => tab.textContent?.trim() || '');
-        expect(tabTexts).toContain('Recording');
-        expect(tabTexts).toContain('AI Generation');
-        expect(tabTexts).toContain('Execution');
-        expect(tabTexts).toContain('Collaboration');
-
-        // Query for tab panel
-        const tabpanel = featuresSection!.querySelector('[role="tabpanel"]');
-        expect(tabpanel).not.toBeNull();
+        // All 4 feature categories are surfaced in the bento grid
+        const sectionText = featuresSection!.textContent || '';
+        expect(sectionText).toMatch(/Recording/i);
+        expect(sectionText).toMatch(/AI\s*(Test\s*)?Generation/i);
+        expect(sectionText).toMatch(/Execution/i);
+        expect(sectionText).toMatch(/Collaboration/i);
 
         cleanup();
       }),

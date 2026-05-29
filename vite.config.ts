@@ -4,6 +4,9 @@ import path from 'path';
 
 export default defineConfig({
   plugins: [react()],
+  // Serve index.html for all routes so /privacy-policy and /terms-of-service
+  // work on direct load and page refresh (SPA fallback).
+  appType: 'spa',
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),

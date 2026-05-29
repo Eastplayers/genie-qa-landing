@@ -5,7 +5,9 @@ import { HeroSection } from './components/sections/HeroSection';
 import { PersonaSection } from './components/sections/PersonaSection';
 import { ProblemSolutionSection } from './components/sections/ProblemSolutionSection';
 import { TransformationSection } from './components/sections/TransformationSection';
-import { FeaturesSection } from './components/sections/FeaturesSection';
+import { BentoFeaturesSection } from './components/sections/BentoFeaturesSection';
+import { AIPlaygroundSection } from './components/sections/AIPlaygroundSection';
+import { MetricsStrip } from './components/MetricsStrip';
 import { SocialProofSection } from './components/sections/SocialProofSection';
 import { TechnicalCredibilitySection } from './components/sections/TechnicalCredibilitySection';
 import { HowItWorksSection } from './components/sections/HowItWorksSection';
@@ -37,6 +39,7 @@ export default function App() {
     <Layout>
       {/* Hook — grab attention */}
       <HeroSection />
+      <MetricsStrip />
       <SectionDivider />
       {/* Clarity — who this is for */}
       <PersonaSection />
@@ -48,10 +51,11 @@ export default function App() {
       <TransformationSection />
       <SectionDivider />
       {/* Solution — feature mapping */}
-      <FeaturesSection />
+      <BentoFeaturesSection />
       <SectionDivider />
       {/* Proof — social proof and technical credibility */}
       <SocialProofSection />
+      <AIPlaygroundSection />
       <TechnicalCredibilitySection />
       <IntegrationsSection />
       <SectionDivider />
