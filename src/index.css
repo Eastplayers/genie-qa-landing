@@ -2,6 +2,135 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─── Premium Utility Classes ─── */
+@layer components {
+  /**
+   * .surface-elevated — Layered card with soft translucency, backdrop blur, and depth shadow.
+   * Text on this surface (#fafafa on rgba(41,41,41,0.85)) achieves ~12.5:1 contrast ratio,
+   * well above the 4.5:1 WCAG AA minimum.
+   */
+  .surface-elevated {
+    background-color: rgba(41, 41, 41, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.12),
+      0 4px 6px rgba(0, 0, 0, 0.08),
+      0 8px 16px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 0.5rem;
+    color: #fafafa;
+  }
+
+  /**
+   * .surface-ai — Atmospheric accent lighting for AI-related elements only.
+   * Subtle warm radial glow that implies intelligence without being garish.
+   * NOT for general use — reserved for AI-specific feature cards.
+   */
+  .surface-ai {
+    background-image: radial-gradient(
+      ellipse at top right,
+      rgba(233, 125, 44, 0.06) 0%,
+      transparent 60%
+    );
+    border-color: rgba(233, 125, 44, 0.12);
+  }
+
+  /**
+   * .shadow-layered — Multi-layer shadow for depth hierarchy.
+   * Creates a sense of elevation and visual weight variation.
+   */
+  .shadow-layered {
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.10),
+      0 4px 8px rgba(0, 0, 0, 0.12),
+      0 12px 24px rgba(0, 0, 0, 0.14);
+  }
+}
+
+/* ─── Hover Effects (gated for pointer devices only) ─── */
+@media (hover: hover) {
+  /**
+   * .border-luminance — Subtle border glow on hover.
+   * Applied selectively to interactive cards, not globally.
+   */
+  .border-luminance {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .border-luminance:hover {
+    border-color: rgba(233, 125, 44, 0.3);
+    box-shadow:
+      0 0 0 1px rgba(233, 125, 44, 0.1),
+      0 4px 12px rgba(233, 125, 44, 0.06);
+  }
+
+  /**
+   * .social-proof-logo — Subtle opacity + scale on hover for integration logos.
+   * Gated behind @media (hover: hover) to avoid mobile sticky-hover.
+   */
+  .social-proof-logo {
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    opacity: 0.7;
+  }
+
+  .social-proof-logo:hover {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  /**
+   * .surface-elevated hover — Subtle lift + shadow increase on interactive cards.
+   * Implies depth and interactivity without being distracting.
+   */
+  .surface-elevated:hover {
+    transform: translateY(-2px);
+    box-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.14),
+      0 6px 10px rgba(0, 0, 0, 0.10),
+      0 12px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  /**
+   * .cta-hover — Subtle scale on hover for CTA buttons.
+   * Communicates interactivity with minimal, purposeful motion.
+   */
+  .cta-hover {
+    transition: transform 0.2s ease;
+  }
+
+  .cta-hover:hover {
+    transform: scale(1.02);
+  }
+}
+
+/* ─── Animations (gated for motion-safe users only) ─── */
+@media (prefers-reduced-motion: no-preference) {
+  .surface-elevated {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .surface-ai {
+    transition: background-image 0.3s ease;
+  }
+}
+
+/* ─── Reduced Motion: disable all transitions and transforms on hover ─── */
+@media (prefers-reduced-motion: reduce) {
+  .surface-elevated,
+  .border-luminance,
+  .social-proof-logo,
+  .cta-hover {
+    transition: none !important;
+  }
+
+  .surface-elevated:hover,
+  .social-proof-logo:hover,
+  .cta-hover:hover {
+    transform: none !important;
+  }
+}
+
 @layer base {
   html {
     scroll-behavior: smooth;

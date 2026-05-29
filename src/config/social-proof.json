@@ -1,15 +1,40 @@
 {
   "metric": { "value": "50+", "label": "QA teams trust Genie QA" },
-  "testimonial": {
-    "quote": "Genie QA cut our test creation time by 80%. We catch edge cases we never thought of manually.",
-    "name": "Sarah Chen",
-    "role": "QA Lead",
-    "company": "TechFlow"
-  },
+  "testimonials": [
+    {
+      "quote": "Reduced regression setup from 3 hours to 20 minutes. Our QA team now ships with confidence every sprint.",
+      "name": "Sarah Chen",
+      "role": "QA Lead",
+      "company": "TechFlow",
+      "avatar": "SC",
+      "stars": 5,
+      "metric": { "before": "3 hrs setup", "after": "20 min setup" }
+    },
+    {
+      "quote": "We went from zero automation to full regression coverage in two weeks — without hiring a single SDET.",
+      "name": "Marcus Rivera",
+      "role": "Engineering Manager",
+      "company": "DataPulse",
+      "avatar": "MR",
+      "stars": 5,
+      "metric": { "before": "0% coverage", "after": "100% coverage" }
+    },
+    {
+      "quote": "The AI understands our forms better than most junior engineers. Edge cases we missed for months got caught on day one.",
+      "name": "Priya Sharma",
+      "role": "Head of Quality",
+      "company": "FinStack",
+      "avatar": "PS",
+      "stars": 4,
+      "metric": { "before": "Months of missed bugs", "after": "Caught on day one" }
+    }
+  ],
   "logos": [
-    { "name": "Company 1", "placeholder": true },
-    { "name": "Company 2", "placeholder": true },
-    { "name": "Company 3", "placeholder": true },
-    { "name": "Company 4", "placeholder": true }
+    { "name": "Playwright" },
+    { "name": "GitHub Actions" },
+    { "name": "Jenkins" },
+    { "name": "GitLab CI" },
+    { "name": "Azure DevOps" },
+    { "name": "Jira" }
   ]
 }

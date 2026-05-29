@@ -2,6 +2,8 @@
 export interface PricingTier {
   name: string;
   price: string; // e.g., "$0", "$49/mo", "Contact us"
+  monthlyPrice?: string; // e.g., "$49/mo"
+  annualPrice?: string; // e.g., "$39/mo" (billed annually)
   features: string[]; // minimum 3
   cta: {
     label: string; // "Start Free" | "Contact Sales"

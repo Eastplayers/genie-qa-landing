@@ -3,6 +3,8 @@
     {
       "name": "Free",
       "price": "$0",
+      "monthlyPrice": "$0",
+      "annualPrice": "$0",
       "features": [
         "1 team member",
         "100 AI generation credits",
@@ -15,6 +17,8 @@
     {
       "name": "Pro",
       "price": "$49/mo",
+      "monthlyPrice": "$49/mo",
+      "annualPrice": "$39/mo",
       "features": [
         "10 team members",
         "5,000 AI generation credits",
@@ -29,6 +33,8 @@
     {
       "name": "Enterprise",
       "price": "Contact us",
+      "monthlyPrice": "Contact us",
+      "annualPrice": "Contact us",
       "features": [
         "Unlimited team members",
         "Unlimited AI credits",
