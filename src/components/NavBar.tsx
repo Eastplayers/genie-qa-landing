@@ -170,10 +170,14 @@ export function NavBar() {
           {/* Brand */}
           <a
             href="/"
-            className="text-foreground font-bold text-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
+            className="focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded"
             aria-label="Genie QA home"
           >
-            Genie QA
+            <img
+              src="/text-logo-light.png"
+              alt="Genie QA"
+              className="h-10 w-auto"
+            />
           </a>
 
           {/* Desktop navigation */}
