@@ -20,17 +20,17 @@ export function FinalCTASection() {
   return (
     <SectionWrapper
       id="final-cta"
-      className="py-20 bg-gradient-to-br from-card via-background to-card"
+      className="py-24 bg-gradient-to-br from-card via-background to-card"
     >
       <div className="max-w-3xl mx-auto px-4 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
           Your First AI-Generated Test Suite in 2 Minutes
         </h2>
         <p className="text-muted text-lg mb-8 max-w-xl mx-auto">
           Join 50+ teams who automated their QA without writing complex code.
         </p>
         <CTAButton variant="primary" section="final-cta" href={registrationUrl}>
-          Start Free
+          Start Automating for Free
         </CTAButton>
 
         {/* Risk reducer */}

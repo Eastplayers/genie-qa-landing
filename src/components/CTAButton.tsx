@@ -49,7 +49,7 @@ export function CTAButton({ variant, section, href, onClick, children }: CTAButt
   };
 
   const baseClasses =
-    'inline-flex items-center justify-center min-w-[44px] min-h-[44px] px-6 py-3 rounded font-semibold text-base transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background';
+    'cta-hover inline-flex items-center justify-center min-w-[44px] min-h-[44px] px-6 py-3 rounded font-semibold text-base transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-background';
 
   const variantClasses =
     variant === 'primary'

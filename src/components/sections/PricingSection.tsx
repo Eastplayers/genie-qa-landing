@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { SectionWrapper } from '../SectionWrapper';
 import { CTAButton } from '../CTAButton';
+import { trackEvent } from '@/utils/analytics';
 import type { PricingConfig, PricingTier, FeatureComparison } from '@/config/types';
 import defaultConfig from '@/config/pricing.json';
 
@@ -9,44 +11,96 @@ interface PricingSectionProps {
 }
 
 /**
- * Displays pricing tier cards and a feature comparison table.
+ * Displays pricing tier cards with a Monthly/Annual billing toggle and a
+ * feature comparison table.
  *
  * - Renders minimum 3 tier cards with name, price, features (≥3), and CTA button.
- * - Visually highlights the recommended tier with a distinct border and badge.
+ * - Monthly/Annual toggle with "Save 20%" discount badge on Annual option.
+ * - Prices update reactively without page reload.
+ * - Trust badges below pricing cards.
+ * - Visually highlights the recommended tier (Pro) with distinct border, shadow, and badge.
  * - CTA: "Start Free" for Free/Pro navigates to registration URL;
  *   "Contact Sales" for Enterprise navigates to contact page.
  * - Side-by-side layout ≥768px, stacked <768px.
  * - Feature comparison table with checkmark/dash/quantity per tier-feature cell.
  *
- * Requirements: 8.1, 8.2, 8.4, 8.5, 8.6, 8.7, 8.8, 8.9
+ * Requirements: 2.6, 3.6, 3.7, 8.1, 8.2, 8.4, 8.5, 8.6, 8.7, 8.8, 8.9
  */
 export function PricingSection({ config = defaultConfig }: PricingSectionProps) {
   const { tiers, features } = config;
+  const [isAnnual, setIsAnnual] = useState(false);
 
   const registrationUrl = 'https://app.genieqa.app/login';
   const contactUrl = 'https://app.genieqa.app/login';
 
+  function handleToggle() {
+    const next = !isAnnual;
+    setIsAnnual(next);
+    trackEvent({
+      type: 'click',
+      label: next ? 'billing_toggle_annual' : 'billing_toggle_monthly',
+      section: 'pricing',
+      timestamp: Date.now(),
+      metadata: { billingCycle: next ? 'annual' : 'monthly' },
+    });
+  }
+
   return (
-    <SectionWrapper id="pricing" className="py-20 px-4 sm:px-6 lg:px-8">
+    <SectionWrapper id="pricing" className="py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center mb-4">
+        <h2 className="text-4xl md:text-5xl font-bold text-foreground text-center mb-4">
           Simple, Transparent Pricing
         </h2>
-        <p className="text-muted text-center max-w-2xl mx-auto mb-12 text-lg">
+        <p className="text-muted text-center max-w-2xl mx-auto mb-8 text-lg">
           Choose the plan that fits your team. Upgrade anytime as you grow.
         </p>
 
+        {/* Billing Toggle */}
+        <div className="flex items-center justify-center gap-3 mb-10">
+          <span className={`text-sm font-medium ${!isAnnual ? 'text-foreground' : 'text-muted'}`}>
+            Monthly
+          </span>
+          <button
+            role="switch"
+            aria-checked={isAnnual}
+            aria-label="Toggle billing cycle between monthly and annual"
+            data-testid="billing-toggle"
+            onClick={handleToggle}
+            className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 ${
+              isAnnual ? 'bg-accent' : 'bg-border'
+            }`}
+          >
+            <span
+              className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                isAnnual ? 'translate-x-6' : 'translate-x-1'
+              }`}
+            />
+          </button>
+          <span className={`text-sm font-medium ${isAnnual ? 'text-foreground' : 'text-muted'}`}>
+            Annual
+          </span>
+          <span className="bg-accent text-white text-xs font-semibold px-2 py-0.5 rounded">
+            Save 20%
+          </span>
+        </div>
+
         {/* Tier Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
           {tiers.map((tier) => (
             <TierCard
               key={tier.name}
               tier={tier}
+              isAnnual={isAnnual}
               registrationUrl={registrationUrl}
               contactUrl={contactUrl}
             />
           ))}
         </div>
+
+        {/* Trust Badges */}
+        <p className="text-center text-muted text-sm mb-16">
+          No credit card required · Cancel anytime · 14-day free trial
+        </p>
 
         {/* Feature Comparison Table */}
         <FeatureComparisonTable features={features} tiers={tiers} />
@@ -57,20 +111,26 @@ export function PricingSection({ config = defaultConfig }: PricingSectionProps) 
 
 interface TierCardProps {
   tier: PricingTier;
+  isAnnual: boolean;
   registrationUrl: string;
   contactUrl: string;
 }
 
-function TierCard({ tier, registrationUrl, contactUrl }: TierCardProps) {
+function TierCard({ tier, isAnnual, registrationUrl, contactUrl }: TierCardProps) {
   const isRecommended = tier.recommended === true;
   const isEnterprise = tier.cta.label === 'Contact Sales';
   const ctaHref = isEnterprise ? contactUrl : registrationUrl;
 
+  // Resolve displayed price based on billing cycle
+  const displayPrice = isAnnual
+    ? (tier.annualPrice ?? tier.price)
+    : (tier.monthlyPrice ?? tier.price);
+
   return (
     <div
-      className={`relative flex flex-col p-6 rounded bg-card border ${
+      className={`relative flex flex-col p-6 rounded bg-card border transition-shadow ${
         isRecommended
-          ? 'border-accent ring-2 ring-accent'
+          ? 'border-accent ring-2 ring-accent shadow-lg shadow-accent/20'
           : 'border-border'
       }`}
     >
@@ -81,7 +141,7 @@ function TierCard({ tier, registrationUrl, contactUrl }: TierCardProps) {
       )}
 
       <h3 className="text-foreground font-bold text-xl mb-2">{tier.name}</h3>
-      <p className="text-foreground text-3xl font-bold mb-4">{tier.price}</p>
+      <p className="text-foreground text-3xl font-bold mb-4">{displayPrice}</p>
 
       <ul className="flex-1 space-y-2 mb-6">
         {tier.features.map((feature, index) => (

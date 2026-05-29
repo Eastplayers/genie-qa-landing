@@ -39,9 +39,9 @@ export function FAQSection({ items = defaultItems }: FAQSectionProps) {
   };
 
   return (
-    <SectionWrapper id="faq" className="py-20 px-4 sm:px-6 lg:px-8">
+    <SectionWrapper id="faq" className="py-24 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground text-center mb-4">
+        <h2 className="text-4xl md:text-5xl font-bold text-foreground text-center mb-4">
           Frequently Asked Questions
         </h2>
         <p className="text-muted text-center max-w-2xl mx-auto mb-12 text-lg">
