@@ -2,8 +2,10 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 
+import { cloudflare } from "@cloudflare/vite-plugin";
+
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), cloudflare()],
   // Serve index.html for all routes so /privacy-policy and /terms-of-service
   // work on direct load and page refresh (SPA fallback).
   appType: 'spa',
